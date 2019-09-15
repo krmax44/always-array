@@ -23,5 +23,5 @@ Very simple.
 import alwaysArray from 'always-array';
 
 alwaysArray('foo'); // ['foo']
-alwaysArray([foo]); // ['foo']
+alwaysArray(['foo']); // ['foo']
 ```
