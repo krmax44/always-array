@@ -1,6 +1,6 @@
 {
   "name": "always-array",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "files": [
@@ -46,14 +46,16 @@
       "@typescript-eslint/no-var-requires": "off",
       "no-await-in-loop": "off"
     },
-    "overrides": [{
-      "files": "**/tests/**",
-      "rules": {
-        "import/no-extraneous-dependencies": "off",
-        "import/no-unassigned-import": "off",
-        "no-undef": "off"
+    "overrides": [
+      {
+        "files": "**/tests/**",
+        "rules": {
+          "import/no-extraneous-dependencies": "off",
+          "import/no-unassigned-import": "off",
+          "no-undef": "off"
+        }
       }
-    }],
+    ],
     "prettier": true
   },
   "prettier": {
