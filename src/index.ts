@@ -1,4 +1,4 @@
-export default function alwaysArray(input: any): any[] {
+export default function alwaysArray<T>(input: T | T[]): T[] {
 	return Array.isArray(input) ? input : [input];
 }
 
