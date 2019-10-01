@@ -1,4 +1,6 @@
-export default function alwaysArray<T>(input: T | readonly T[]): readonly T[] {
+export type SingleOrArray<T> = T | readonly T[];
+
+export default function alwaysArray<T>(input: SingleOrArray<T>): readonly T[] {
 	return Array.isArray(input) ? input : [input];
 }
 
