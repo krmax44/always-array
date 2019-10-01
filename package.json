@@ -13,6 +13,7 @@
     "test": "mocha -r ts-node/register 'src/**/*.test.ts' && yarn lint",
     "lint": "xo",
     "build": "tsc -p ./tsconfig.json && uglifyjs build/index.js -o build/index.js -m -c",
+    "prepare": "npm run build",
     "dev": "tsc -p ./tsconfig.json -w"
   },
   "devDependencies": {
