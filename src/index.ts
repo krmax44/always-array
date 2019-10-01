@@ -1,4 +1,4 @@
-export default function alwaysArray<T>(input: T | T[]): T[] {
+export default function alwaysArray<T>(input: T | readonly T[]): readonly T[] {
 	return Array.isArray(input) ? input : [input];
 }
 
