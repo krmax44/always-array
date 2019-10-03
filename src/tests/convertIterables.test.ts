@@ -10,7 +10,10 @@ describe('convert iterables', () => {
 	});
 
 	it("shouldn't spread the iterable", () => {
-		const result = alwaysArray(new Set([1, 2, 3]));
-		expect(result).to.eql([new Set([1, 2, 3])]);
+		const set = alwaysArray(new Set([1, 2, 3]));
+		const string = alwaysArray('foo', { convertIterables: true });
+
+		expect(set).to.eql([new Set([1, 2, 3])]);
+		expect(string).to.eql(['foo']);
 	});
 });
