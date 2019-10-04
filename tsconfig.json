@@ -2,9 +2,9 @@
   "compilerOptions": {
     "module": "commonjs",
     "moduleResolution": "node",
-    "noImplicitAny": true,
     "preserveConstEnums": true,
     "target": "es2015",
+    "strict": true,
     "esModuleInterop": true,
     "declaration": true,
     "outDir": "./build/"
