@@ -7,7 +7,10 @@ interface Options {
  * @param input Input that will be converted to an array if it isn't already.
  * @param options.convertIterables [false] Iterables will be spread into an array.
  */
-export default function alwaysArray<T>(input: T | T[], options?: Options): T[] {
+export default function alwaysArray<T>(
+	input: T | T[] | Iterable<T>,
+	options?: Options
+): T[] {
 	options = {
 		convertIterables: false,
 		...options
@@ -17,12 +20,12 @@ export default function alwaysArray<T>(input: T | T[], options?: Options): T[] {
 		options.convertIterables === true &&
 		input !== null &&
 		typeof input !== 'string' &&
-		typeof (input as Iterable<any>)[Symbol.iterator] === 'function'
+		typeof (input as Iterable<T>)[Symbol.iterator] === 'function'
 	) {
-		return [...(input as Iterable<any>)];
+		return [...(input as Iterable<T>)];
 	}
 
-	return Array.isArray(input) ? input : [input];
+	return Array.isArray(input) ? input : [input as T];
 }
 
 if (typeof module !== 'undefined') {
