@@ -4,7 +4,8 @@
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "files": [
-    "build"
+    "build",
+    "!build/tests/**"
   ],
   "repository": "github:krmax44/always-array",
   "author": "krmax44<hi@krmax44.de>",
