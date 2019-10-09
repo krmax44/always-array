@@ -1,3 +1,5 @@
+type SingleOrArray<T> = T | T[] | Iterable<T> | readonly T[];
+
 interface Options {
 	convertIterables: boolean;
 }
@@ -8,7 +10,7 @@ interface Options {
  * @param options.convertIterables [false] Iterables will be spread into an array.
  */
 export default function alwaysArray<T>(
-	input: T | T[] | Iterable<T>,
+	input: SingleOrArray<T>,
 	options?: Options
 ): T[] {
 	options = {
@@ -16,16 +18,16 @@ export default function alwaysArray<T>(
 		...options
 	};
 
-	if (
-		options.convertIterables === true &&
-		input !== null &&
-		typeof input !== 'string' &&
-		typeof (input as Iterable<T>)[Symbol.iterator] === 'function'
-	) {
-		return [...(input as Iterable<T>)];
-	}
+	const isArray = Array.isArray(input);
 
-	return Array.isArray(input) ? input : [input as T];
+	const isIterable =
+		isArray ||
+		(options.convertIterables === true &&
+			input !== null &&
+			typeof input !== 'string' &&
+			typeof (input as Iterable<T>)[Symbol.iterator] === 'function');
+
+	return isIterable ? [...(input as Iterable<T>)] : [input as T];
 }
 
 if (typeof module !== 'undefined') {
