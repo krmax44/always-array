@@ -24,4 +24,8 @@ import alwaysArray from 'always-array';
 
 alwaysArray('foo'); // ['foo']
 alwaysArray(['foo']); // ['foo']
+
+const set = new Set([1, 2, 3]);
+alwaysArray(set); // [ Set { 1, 2, 3 } ]
+alwaysArray(set, { convertIterables: true }); // [1, 2, 3]
 ```
