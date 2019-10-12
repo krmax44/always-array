@@ -22,16 +22,20 @@ function alwaysArray<T>(input: SingleOrArray<T>, options?: Options): T[] {
 		...options
 	};
 
-	const isArray = Array.isArray(input);
+	if (Array.isArray(input)) {
+		return [...input];
+	}
 
-	const isIterable =
-		isArray ||
-		(options.convertIterables === true &&
-			input !== null &&
-			typeof input !== 'string' &&
-			typeof (input as Iterable<T>)[Symbol.iterator] === 'function');
+	if (
+		options.convertIterables === true &&
+		typeof input !== 'string' &&
+		input instanceof Object &&
+		typeof input[Symbol.iterator] === 'function'
+	) {
+		return [...input];
+	}
 
-	return isIterable ? [...(input as Iterable<T>)] : [input as T];
+	return [input as T];
 }
 
 export default alwaysArray;
@@ -40,4 +44,3 @@ if (typeof module !== 'undefined') {
 	module.exports = alwaysArray;
 	module.exports.default = alwaysArray;
 }
-
