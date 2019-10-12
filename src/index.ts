@@ -9,12 +9,13 @@ interface Options {
  * @param input Input that will be converted to an array if it isn't already.
  * @param options.convertIterables [false] Iterables will be spread into an array.
  */
-function alwaysArray(input: string, options?: Options): [string];
-function alwaysArray<T>(input: T[], options?: Options): T[];
-function alwaysArray<T>(input: T, options?: { convertIterables: false }): [T];
+function alwaysArray<T>(
+	input: T | T[],
+	options?: { convertIterables: false | undefined }
+): T[];
 function alwaysArray<T>(
 	input: Iterable<T>,
-	options?: { convertIterables: true }
+	options: { convertIterables: true }
 ): T[];
 function alwaysArray<T>(input: SingleOrArray<T>, options?: Options): T[] {
 	options = {
