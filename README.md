@@ -28,4 +28,5 @@ alwaysArray(['foo']); // ['foo']
 const set = new Set([1, 2, 3]);
 alwaysArray(set); // [ Set { 1, 2, 3 } ]
 alwaysArray(set, { convertIterables: true }); // [1, 2, 3]
+alwaysArray('foo', { convertIterables: true }); // ['foo'] - albeit being an iterable, strings won't be spread into an array
 ```
