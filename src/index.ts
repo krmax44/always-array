@@ -1,4 +1,4 @@
-type SingleOrArray<T> = T | T[] | Iterable<T> | readonly T[];
+type SingleOrArray<T> = T | Iterable<T> | readonly T[];
 
 interface Options {
 	convertIterables: boolean;
