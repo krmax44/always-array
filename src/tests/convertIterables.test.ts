@@ -1,19 +1,17 @@
 import { expect } from 'chai';
-import alwaysArray from '..';
+import { convertIterables } from '..';
 import 'mocha';
 
 describe('convert iterables', () => {
 	it('should spread the iterable', () => {
-		const result = alwaysArray(new Set([1, 2, 3]), { convertIterables: true });
+		const result = convertIterables(new Set([1, 2, 3]));
 
 		expect(result).to.eql([1, 2, 3]);
 	});
 
-	it("shouldn't spread the iterable", () => {
-		const set = alwaysArray(new Set([1, 2, 3]));
-		const string = alwaysArray('foo', { convertIterables: true });
+	it("shouldn't spread strings", () => {
+		const string = convertIterables('foo');
 
-		expect(set).to.eql([new Set([1, 2, 3])]);
 		expect(string).to.eql(['foo']);
 	});
 });
