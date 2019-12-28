@@ -24,4 +24,9 @@ import alwaysArray from 'always-array';
 
 alwaysArray('foo'); // ['foo']
 alwaysArray(['foo']); // ['foo']
+
+const set = new Set([1, 2, 3]);
+alwaysArray(set); // [ Set { 1, 2, 3 } ]
+alwaysArray.convertIterables(set); // [1, 2, 3]
+alwaysArray.convertIterables('foo'); // ['foo'] - albeit being an iterable, strings won't be spread into an array
 ```
